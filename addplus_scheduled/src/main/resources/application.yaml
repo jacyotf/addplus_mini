@@ -1,0 +1,19 @@
+# 多环境配置文件激活属性
+spring:
+  profiles:
+    active: dev
+    include: connector
+---
+#配置需要加载的数据源,redis,mysql.,mongodb
+addplus:
+  redis_connector: true
+  mysql_connector: true
+  mongodb_connector: true
+---
+#Dubbo 配置
+spring:
+  application:
+    name: addplus_scheduled
+---
+logging:
+  config: classpath:logback-spring.xml

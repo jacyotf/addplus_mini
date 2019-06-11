@@ -1,0 +1,22 @@
+# 多环境配置文件激活属性
+spring:
+  profiles:
+    active: dev
+    include: connector
+---
+#配置需要加载的数据源,redis,mysql.,mongodb
+addplus:
+  redis_connector: true
+  mysql_connector: true
+  mongodb_connector: false
+  rabbitmq_connector: false
+---
+#Dubbo 配置
+spring:
+  application:
+    name: queue
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration,org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+---
+logging:
+  config: classpath:logback-spring.xml

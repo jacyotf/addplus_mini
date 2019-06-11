@@ -1,0 +1,59 @@
+# 多环境配置文件激活属性
+spring:
+  profiles:
+    active: dev
+    include: connector,base
+  application:
+    name: addplus_web
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true
+    default-property-inclusion: non_null
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration,org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    template-resolver-order: 1
+    cache: false   #开发时关闭缓存,不然没法看到实时页面
+    check-template: false
+    reactive:
+      max-chunk-size: 8192
+---
+#配置需要加载的数据源
+addplus:
+  redis_connector: true
+  mysql_connector: true
+  mongodb_connector: false
+  rabbitmq_connector: false
+---
+#shrio账号锁定配置
+shrio:
+  login:
+    maxRetry: 10
+    lockTime: 3600
+---
+#log打印sql日志
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    com:
+      addplus:
+        api:
+          mapper: DEBUG
+---
+# 自定义注解方法扫描路径
+annotation:
+  package:
+    name: com.addplus.server.web.serviceimpl
+---
+# 扫描service包名
+service:
+  package:
+    name: com.addplus.server.api.service
