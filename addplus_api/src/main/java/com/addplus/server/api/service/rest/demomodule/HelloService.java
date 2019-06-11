@@ -112,4 +112,5 @@ public interface HelloService {
 
     Boolean updateUser(Integer demoUserId)throws Exception;
     IPage<SysDemoUser> getAllUsers(Integer pageNo, Integer pageSize) throws Exception;
+
 }
