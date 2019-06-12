@@ -148,6 +148,7 @@ public class HelloServiceImpl implements HelloService {
     @Override
     @SysLogRecord
     public  SysDemoUser selectUser (Integer demoUserId)throws Exception {
+        /*获取key为bbb的缓存，如果有则返回去true*/
         boolean b= redisTemplate.hasKey("bbb");
         if(!b){
         /*QueryWrapper->条件构造器*/

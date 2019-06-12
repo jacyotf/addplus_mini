@@ -1,0 +1,2 @@
+2019-06-12 09:28:17,002 ERROR [threadPoolTaskExecutor-1] o.s.d.r.l.RedisMessageListenerContainer [RedisMessageListenerContainer.java : 651] Connection failure occurred. Restarting subscription task after 5000 ms
+2019-06-12 09:46:41,718 INFO [http-nio-8081-exec-6] c.a.s.a.utils.RandomValidateCodeUtil [RandomValidateCodeUtil.java : 76] OO6C
